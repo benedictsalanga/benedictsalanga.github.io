@@ -36,7 +36,7 @@ function draw() {
   strokeWeight(2);
   line(centerX, centerY, dotX, dotY);
 
-// Tangerine moving dot
+// Moving dot
   noStroke();
   fill(0, 0, 0);
   circle(dotX, dotY, 24);
