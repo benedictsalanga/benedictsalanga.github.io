@@ -1,207 +1,227 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Animation Project</title>
 
-  <title>Orbiting Dot Animation | IT3 Final Drill</title>
+    <!-- p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+    <script src="sketch.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      padding: 35px 20px;
-      min-height: 100vh;
-      background: #171717;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-    }
+        body {
+            margin: 0;
+            padding: 35px 20px;
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #101116 0%,
+                #171c32 50%,
+                #101116 100%
+            );
+            color: white;
+            font-family: Arial, sans-serif;
+        }
 
-    main {
-      width: min(850px, 100%);
-      margin: auto;
-      text-align: center;
-    }
+        main {
+            width: min(850px, 100%);
+            margin: auto;
+            text-align: center;
+        }
 
-    h1 {
-      margin: 10px 0;
-      font-size: 32px;
-      color: #ffffff;
-    }
+        h1 {
+            margin: 10px 0;
+            font-size: 32px;
+            color: white;
+        }
 
-    .subtitle {
-      color: #c5c5c5;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+        .subtitle {
+            color: #c5c5c5;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
 
-    .box {
-      background: #243b8a;
-      border: 1px solid #3656b5;
-      border-radius: 14px;
-      padding: 22px;
-      margin: 20px 0;
-      text-align: left;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-    }
+        .box {
+            background: #191c27;
+            border: 2px solid #4169e1;
+            border-radius: 14px;
+            padding: 22px;
+            margin: 20px 0;
+            text-align: left;
+            box-shadow: 0 5px 18px rgba(65, 105, 225, 0.12);
+        }
 
-    .box h2 {
-      color: #ffffff;
-      font-size: 20px;
-      margin-top: 0;
-      margin-bottom: 14px;
-    }
+        .box h2 {
+            color: white;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
 
-    #sketch-holder {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      padding: 15px;
-      background: #202020;
-      border: 2px solid #ff9933;
-      border-radius: 14px;
-      overflow: hidden;
-    }
+        #sketch-holder {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #101116;
+            border: 2px solid #4169e1;
+            border-radius: 14px;
+            overflow: hidden;
+        }
 
-    canvas {
-      max-width: 100%;
-      height: auto !important;
-    }
+        canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
 
-    .box p {
-      color: #f0f2ff;
-      line-height: 1.7;
-    }
+        .box p {
+            color: #e0e3ed;
+            line-height: 1.7;
+        }
 
-    .box ul {
-      padding-left: 22px;
-      color: #f0f2ff;
-      line-height: 1.9;
-    }
+        .box ul {
+            padding-left: 22px;
+            color: #e0e3ed;
+            line-height: 1.9;
+        }
 
-    .box li {
-      padding-left: 4px;
-      margin-bottom: 5px;
-    }
+        .box li {
+            padding-left: 4px;
+            margin-bottom: 5px;
+        }
 
-    code {
-      color: #ffb45e;
-      font-weight: bold;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 3px 7px;
-      border-radius: 5px;
-    }
+        code {
+            color: #ff9933;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 7px;
+            border-radius: 5px;
+        }
 
-    a {
-      color: #ffd08a;
-      text-decoration: none;
-    }
+        a {
+            color: #8eafff;
+            text-decoration: none;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
+        a:hover {
+            color: #ff9933;
+            text-decoration: underline;
+        }
 
-    .footer {
-      margin-top: 30px;
-      color: #999999;
-      font-size: 13px;
-    }
-  </style>
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 13px;
+        }
 
-  <!-- Load p5.js before sketch.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
-  <script src="sketch.js"></script>
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
 
+            h1 {
+                font-size: 25px;
+            }
+
+            .box {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <main>
+    <main>
 
-    <h1>Orbiting Dot Animation</h1>
+        <h1>Mathematical Animation</h1>
 
-    <p class="subtitle">
-      Explore circular motion through mathematics using sine and cosine.
-    </p>
+        <p class="subtitle">
+            An interactive visualization of circular motion using
+            mathematical concepts and programming.
+        </p>
 
-    <!-- Animation -->
-    <div id="sketch-holder"></div>
+        <section class="box">
+            <h2>Animation</h2>
 
-    <!-- Controls Box -->
-    <section class="box">
-      <h2>⌨ Animation Controls</h2>
-      <ul>
-        <li><strong>SPACE:</strong> Pause or resume animation</li>
-        <li><strong>UP ARROW:</strong> Increase rotation speed</li>
-        <li><strong>DOWN ARROW:</strong> Decrease rotation speed</li>
-      </ul>
-    </section>
+            <p>
+                Observe how the moving point follows a circular path.
+                You can control the animation using your keyboard.
+            </p>
 
-    <!-- Mathematics Box -->
-    <section class="box">
-      <h2>📐 Mathematics Behind the Animation</h2>
-      <p>The position of the moving dot is calculated using:</p>
-      <ul>
-        <li><code>x = centerX + radius × cos(angle)</code></li>
-        <li><code>y = centerY + radius × sin(angle)</code></li>
-      </ul>
-      <p>
-        Sine and cosine determine the horizontal and vertical
-        positions of the dot as it travels around a circular path.
-      </p>
-    </section>
+            <div id="sketch-holder"></div>
 
-    <!-- Sources Box -->
-    <section class="box">
-      <h2>📚 Sources and References</h2>
-      <ul>
-        <li>
-          <a href="https://p5js.org/reference/" target="_blank">
-            p5.js Official Reference
-          </a>
-          – Documentation for the JavaScript creative coding library.
-        </li>
-        <li>
-          <a href="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"
-             target="_blank">
-            p5.js CDN
-          </a>
-          – Library used to run the animation.
-        </li>
-        <li>
-          Student-created animation code – <code>sketch.js</code>.
-        </li>
-        <li>
-          AI assistance – ChatGPT (OpenAI), used for coding and webpage design assistance.
-        </li>
-      </ul>
-    </section>
+            <p>
+                <strong>Controls:</strong><br>
+                SPACE - Pause or resume the animation<br>
+                UP ARROW - Increase speed<br>
+                DOWN ARROW - Decrease speed
+            </p>
+        </section>
 
-    <!-- Video Explanation Box -->
-    <section class="box">
-      <h2>🎥 Video Explanation</h2>
-      <p>
-        Watch the recorded explanation of the animation, its mathematical
-        formulas, and how the controls work.
-      </p>
-      <p>
-        <strong>Video Link:</strong>
-        <a href="#" target="_blank">
-          Add your recorded video link here
-        </a>
-      </p>
-    </section>
+        <section class="box">
+            <h2>Mathematical Explanation</h2>
 
-    <p class="footer">
-      IT3 Final Drill | Orbiting Dot Animation
-    </p>
+            <p>
+                This animation demonstrates circular motion using
+                trigonometric functions. The position of the moving
+                point is calculated using:
+            </p>
 
-  </main>
+            <p>
+                <code>x = centerX + radius × cos(angle)</code>
+            </p>
+
+            <p>
+                <code>y = centerY + radius × sin(angle)</code>
+            </p>
+
+            <p>
+                The sine and cosine functions determine the horizontal
+                and vertical positions of the point as it moves around
+                the circle.
+            </p>
+        </section>
+
+        <section class="box">
+            <h2>Learning Objectives</h2>
+
+            <ul>
+                <li>Understand the relationship between angles and circular motion.</li>
+                <li>Apply sine and cosine functions in a practical example.</li>
+                <li>Observe how changing speed affects rotational motion.</li>
+                <li>Understand how mathematical formulas can create animations.</li>
+            </ul>
+        </section>
+
+        <section class="box">
+            <h2>References</h2>
+
+            <p>
+                <a href="https://p5js.org/reference/" target="_blank">
+                    p5.js Reference
+                </a>
+            </p>
+
+            <p>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                   target="_blank">
+                    JavaScript Documentation
+                </a>
+            </p>
+        </section>
+
+        <p class="footer">
+            Mathematical Animation Project | IT3 Final Drill
+        </p>
+
+    </main>
 
 </body>
 </html>
-```
