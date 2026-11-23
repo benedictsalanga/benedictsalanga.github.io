@@ -1,57 +1,207 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Orbiting Dot Animation | IT3 Final Drill</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 24px;
+      padding: 35px 20px;
       min-height: 100vh;
-      background: #141826;
+      background: #171717;
       color: #ffffff;
       font-family: Arial, sans-serif;
+    }
+
+    main {
+      width: min(850px, 100%);
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 32px;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      color: #c5c5c5;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .box {
+      background: #243b8a;
+      border: 1px solid #3656b5;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 20px 0;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .box h2 {
+      color: #ffffff;
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    #sketch-holder {
       display: flex;
       justify-content: center;
+      margin: 20px 0;
+      padding: 15px;
+      background: #202020;
+      border: 2px solid #ff9933;
+      border-radius: 14px;
+      overflow: hidden;
     }
-    main { width: min(680px, 100%); text-align: center; }
-    h1 { margin: 8px 0; font-size: 28px; }
-    p { color: #d5d8e2; line-height: 1.5; }
-    #sketch-holder { display: flex; justify-content: center; margin: 20px 0; }
-    canvas { max-width: 100%; height: auto !important; }
-    .details {
-      background: #222a40;
-      border: 1px solid #46506a;
-      border-radius: 10px;
-      padding: 16px;
-      text-align: left;
+
+    canvas {
+      max-width: 100%;
+      height: auto !important;
     }
-    code { color: #ffe078; }
-    a { color: #9edbff; }
+
+    .box p {
+      color: #f0f2ff;
+      line-height: 1.7;
+    }
+
+    .box ul {
+      padding-left: 22px;
+      color: #f0f2ff;
+      line-height: 1.9;
+    }
+
+    .box li {
+      padding-left: 4px;
+      margin-bottom: 5px;
+    }
+
+    code {
+      color: #ffb45e;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 3px 7px;
+      border-radius: 5px;
+    }
+
+    a {
+      color: #ffd08a;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: #999999;
+      font-size: 13px;
+    }
   </style>
-  <!-- Load p5.js before sketch.js, as required by the activity. -->
+
+  <!-- Load p5.js before sketch.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
   <script src="sketch.js"></script>
+
 </head>
+
 <body>
+
   <main>
+
     <h1>Orbiting Dot Animation</h1>
-    <p>A moving dot travels around a circular path using sine and cosine.</p>
+
+    <p class="subtitle">
+      Explore circular motion through mathematics using sine and cosine.
+    </p>
+
+    <!-- Animation -->
     <div id="sketch-holder"></div>
-    <section class="details">
-      <strong>Controls</strong>
-      <p>SPACE: Pause or resume<br>
-      UP ARROW: Increase speed<br>
-      DOWN ARROW: Decrease speed</p>
-      <strong>Mathematics</strong>
-      <p><code>x = centerX + radius × cos(angle)</code><br>
-      <code>y = centerY + radius × sin(angle)</code></p>
-      <strong>Sources</strong>
-      <p>Animation code based on the student's supplied sketch.js. p5.js is loaded from its CDN. AI assistance: ChatGPT.</p>
-      <p>Video explanation: Replace this text with your recorded video link before submitting.</p>
+
+    <!-- Controls Box -->
+    <section class="box">
+      <h2>⌨ Animation Controls</h2>
+      <ul>
+        <li><strong>SPACE:</strong> Pause or resume animation</li>
+        <li><strong>UP ARROW:</strong> Increase rotation speed</li>
+        <li><strong>DOWN ARROW:</strong> Decrease rotation speed</li>
+      </ul>
     </section>
+
+    <!-- Mathematics Box -->
+    <section class="box">
+      <h2>📐 Mathematics Behind the Animation</h2>
+      <p>The position of the moving dot is calculated using:</p>
+      <ul>
+        <li><code>x = centerX + radius × cos(angle)</code></li>
+        <li><code>y = centerY + radius × sin(angle)</code></li>
+      </ul>
+      <p>
+        Sine and cosine determine the horizontal and vertical
+        positions of the dot as it travels around a circular path.
+      </p>
+    </section>
+
+    <!-- Sources Box -->
+    <section class="box">
+      <h2>📚 Sources and References</h2>
+      <ul>
+        <li>
+          <a href="https://p5js.org/reference/" target="_blank">
+            p5.js Official Reference
+          </a>
+          – Documentation for the JavaScript creative coding library.
+        </li>
+        <li>
+          <a href="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"
+             target="_blank">
+            p5.js CDN
+          </a>
+          – Library used to run the animation.
+        </li>
+        <li>
+          Student-created animation code – <code>sketch.js</code>.
+        </li>
+        <li>
+          AI assistance – ChatGPT (OpenAI), used for coding and webpage design assistance.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Video Explanation Box -->
+    <section class="box">
+      <h2>🎥 Video Explanation</h2>
+      <p>
+        Watch the recorded explanation of the animation, its mathematical
+        formulas, and how the controls work.
+      </p>
+      <p>
+        <strong>Video Link:</strong>
+        <a href="#" target="_blank">
+          Add your recorded video link here
+        </a>
+      </p>
+    </section>
+
+    <p class="footer">
+      IT3 Final Drill | Orbiting Dot Animation
+    </p>
+
   </main>
+
 </body>
 </html>
+```
