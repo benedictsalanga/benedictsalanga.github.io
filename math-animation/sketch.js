@@ -26,12 +26,19 @@ function draw() {
 
   // Draw the path, the radius line, and the dot
   noFill();
-  stroke(90);
+  // Tangerine orbit circle
+  stroke(255, 153, 51);
+  strokeWeight(3);
   circle(centerX, centerY, radius * 2);
-  stroke(255, 220, 100);
+
+  // Tangerine radius line
+  stroke(255, 153, 51);
+  strokeWeight(2);
   line(centerX, centerY, dotX, dotY);
+
+// Tangerine moving dot
   noStroke();
-  fill(255, 220, 100);
+  fill(0, 0, 0);
   circle(dotX, dotY, 24);
 
   // Instructions
